@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class SearchViewController: UIViewController {
   
@@ -95,6 +96,13 @@ extension SearchViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     dismissKeyPad()
+    
+    guard let previewUrl = URL(string: tracks[indexPath.row].previewUrl) else { return }
+    let playerViewController = AVPlayerViewController()
+    present(playerViewController, animated: true, completion: nil)
+    let player = AVPlayer(url: previewUrl)
+    playerViewController.player = player
+    player.play()
   }
 }
 
@@ -130,7 +138,6 @@ extension SearchViewController: UISearchBarDelegate {
         strongSelf.tableView.setContentOffset(.zero, animated: false)
       }
     }.resume()
-    
   }
   
   func position(for bar: UIBarPositioning) -> UIBarPosition {

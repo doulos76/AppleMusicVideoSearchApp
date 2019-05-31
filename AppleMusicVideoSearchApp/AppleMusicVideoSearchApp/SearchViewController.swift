@@ -10,8 +10,11 @@ import UIKit
 
 class SearchViewController: UIViewController {
   
+  let cellId = "cellId"
+  
   let searchBar: UISearchBar = {
     let searchBar = UISearchBar()
+    searchBar.barTintColor = UIColor(red: 229 / 255, green: 38 / 255, blue: 89 / 255, alpha: 1)
     searchBar.translatesAutoresizingMaskIntoConstraints = false
     return searchBar
   }()
@@ -32,6 +35,9 @@ class SearchViewController: UIViewController {
   }
 
   fileprivate func setupLayout() {
+    
+    tableView.register(ResultCell.self, forCellReuseIdentifier: cellId)
+    
     view.addSubview(searchBar)
     view.addSubview(tableView)
     
@@ -48,12 +54,24 @@ class SearchViewController: UIViewController {
 
 }
 
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK:- TableView DataSource
+
+extension SearchViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 5
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ResultCell
+    
+    return cell
+  }
+}
+
+// MARK:- TableView Delegate
+
+extension SearchViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 74
   }
 }

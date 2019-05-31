@@ -34,7 +34,7 @@ class ResultCell: UITableViewCell {
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
+    selectionStyle = .none
     setupLayout()
   }
   
@@ -51,5 +51,10 @@ class ResultCell: UITableViewCell {
     titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
     titleLabel.bottomAnchor.constraint(equalTo: artisNameLabel.topAnchor, constant: -5).isActive = true
     artisNameLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+  }
+  
+  func configure(track: Track) {
+    titleLabel.text = track.title
+    artisNameLabel.text = track.artistName
   }
 }

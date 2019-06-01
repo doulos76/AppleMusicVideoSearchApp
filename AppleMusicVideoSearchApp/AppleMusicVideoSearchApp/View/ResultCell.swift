@@ -17,6 +17,8 @@ class ResultCell: UITableViewCell {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Title"
     label.font = .boldSystemFont(ofSize: 20)
+    label.numberOfLines = 0
+    label.lineBreakMode = NSLineBreakMode.byWordWrapping
     label.textColor = .black
     return label
   }()
@@ -27,6 +29,7 @@ class ResultCell: UITableViewCell {
     label.text = "Artist Name"
     label.font = .systemFont(ofSize: 12)
     label.textColor = .lightGray
+    label.numberOfLines = 0
     return label
   }()
   
@@ -49,8 +52,10 @@ class ResultCell: UITableViewCell {
     addSubview(artisNameLabel)
     titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
     titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
+    titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
     titleLabel.bottomAnchor.constraint(equalTo: artisNameLabel.topAnchor, constant: -5).isActive = true
     artisNameLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+    artisNameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
   }
   
   func configure(track: Track) {

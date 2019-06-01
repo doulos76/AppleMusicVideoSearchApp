@@ -15,6 +15,7 @@
 		B513E48122A108730092210D /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E48022A108730092210D /* ResultCell.swift */; };
 		B513E48322A110ED0092210D /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E48222A110ED0092210D /* Track.swift */; };
 		B513E48522A111040092210D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513E48422A111040092210D /* Response.swift */; };
+		B5A2E3E322A1EF77008A6FBC /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2E3E222A1EF77008A6FBC /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B513E48022A108730092210D /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		B513E48222A110ED0092210D /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		B513E48422A111040092210D /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		B5A2E3E222A1EF77008A6FBC /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +62,11 @@
 		B513E46A22A104190092210D /* AppleMusicVideoSearchApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5A2E3E122A1EF59008A6FBC /* Extensions */,
 				B513E46B22A104190092210D /* AppDelegate.swift */,
 				B513E47F22A1050D0092210D /* Model */,
 				B513E47E22A105050092210D /* View */,
 				B513E47D22A104F90092210D /* Controller */,
-				B513E46D22A104190092210D /* SearchViewController.swift */,
 				B513E46F22A104190092210D /* Main.storyboard */,
 				B513E47222A1041B0092210D /* Assets.xcassets */,
 				B513E47422A1041B0092210D /* LaunchScreen.storyboard */,
@@ -76,6 +78,7 @@
 		B513E47D22A104F90092210D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B513E46D22A104190092210D /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -95,6 +98,14 @@
 				B513E48422A111040092210D /* Response.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B5A2E3E122A1EF59008A6FBC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5A2E3E222A1EF77008A6FBC /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A2E3E322A1EF77008A6FBC /* UIView+Extensions.swift in Sources */,
 				B513E46E22A104190092210D /* SearchViewController.swift in Sources */,
 				B513E46C22A104190092210D /* AppDelegate.swift in Sources */,
 				B513E48122A108730092210D /* ResultCell.swift in Sources */,

@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
   
   let searchBar: UISearchBar = {
     let searchBar = UISearchBar()
-    searchBar.barTintColor = UIColor(red: 229 / 255, green: 38 / 255, blue: 89 / 255, alpha: 1)
+    searchBar.barTintColor = UIColor.rgb(red: 229, green: 38, blue: 89)
     searchBar.translatesAutoresizingMaskIntoConstraints = false
     return searchBar
   }()
@@ -56,9 +56,12 @@ class SearchViewController: UIViewController {
     searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     
     tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
-    tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = 74
   }
   
 
@@ -90,10 +93,7 @@ extension SearchViewController: UITableViewDataSource {
 // MARK:- TableView Delegate
 
 extension SearchViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 74
-  }
-  
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     dismissKeyPad()
     
@@ -111,7 +111,6 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     dismissKeyPad()
-    
     guard let searchText = searchBar.text, searchText.isEmpty == false else { return }
     let urlString = "https://itunes.apple.com/search?media=music&entity=musicVideo"
     var urlComponents = URLComponents(string: urlString)!
@@ -132,7 +131,7 @@ extension SearchViewController: UISearchBarDelegate {
       guard let resultData = data else { return }
       //print(resultData)
       strongSelf.tracks = strongSelf.parse(data: resultData) ?? []
-      print(strongSelf.tracks)
+      //print(strongSelf.tracks)
       DispatchQueue.main.async {
         strongSelf.tableView.reloadData()
         strongSelf.tableView.setContentOffset(.zero, animated: false)
